@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 뒤로가기 버튼과 제목을 포함하는 LinearLayout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+        android:contentDescription="뒤로가기"
+        android:background="?attr/selectableItemBackground"
+        android:layout_marginEnd="8dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+        android:gravity="center"
+        android:text="RFID 카드 등록"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RFID 카드 이름:"
+        android:textColor="#000000"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/rfid_card_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="카드 이름 입력"/>
+
+    <Button
+        android:id="@+id/register_card_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="카드 등록하기"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_border"
+    android:padding="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp">
+
+        <EditText
+            android:id="@+id/main_card_name"
+            android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="메인카드1"
+        android:textColor="#000000"
+        android:background="@android:drawable/edit_text"
+        android:padding="8dp"
+        android:hint="카드 이름"/>
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="삭제"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
+
+</LinearLayout>

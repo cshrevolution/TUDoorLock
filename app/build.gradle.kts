@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.project.tudoorlock"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.project.tudoorlock"
