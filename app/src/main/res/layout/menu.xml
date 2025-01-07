@@ -4,91 +4,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF">
 
+    <!-- 상단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1.5"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="          원격 도어락"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="원격 도어락"
-                android:textColor="#000000"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:contentDescription="Settings"
+            android:src="@drawable/ic_settings" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="54dp"
-                android:layout_height="57dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_bell"/>
-
-        </LinearLayout>
-
+        <ImageView
+            android:layout_width="49dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="Bell"
+            android:src="@drawable/ic_bell" />
     </LinearLayout>
 
+    <!-- 비밀번호 입력 버튼 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_password_input"
-            android:layout_width="403dp"
+            android:layout_width="match_parent"
             android:layout_height="228dp"
             android:layout_marginTop="40dp"
             android:text="비밀번호 입력"
             android:textSize="20sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="top"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_password_change"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="비밀번호 변경" />
-
         <Button
             android:id="@+id/btn_live_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="실시간 카메라"/>
-
-        <Button
-            android:id="@+id/btn_RFID_card"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RFID 카드 관리"/>
-
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:text="실시간 카메라" />
     </LinearLayout>
 
-
+    <!-- 하단 버튼들 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <!-- 하단 버튼 내용이 필요하다면 추가 -->
+    </LinearLayout>
 </LinearLayout>
