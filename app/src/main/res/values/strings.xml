@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TUDoorLock</string>
+    <string name="app_name">TUDoorLock</string> <!-- 앱 이름 -->
+    <string name="back_button">뒤로가기</string> <!-- 뒤로가기 버튼 설명 -->
+    <!-- 다른 문자열 리소스들 -->
 </resources>
