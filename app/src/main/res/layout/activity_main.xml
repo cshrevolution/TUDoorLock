@@ -33,11 +33,4 @@
     android:text="확인"
     android:layout_marginTop="16dp"/>
 
-    <!-- 맨 아래에 추가된 확인 버튼 -->
-    <Button
-        android:id="@+id/confirm_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="확인"
-        android:layout_marginTop="16dp"/>
 </LinearLayout>
