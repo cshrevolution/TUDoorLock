@@ -45,4 +45,26 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/button_border"
         android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/btn_product_password_change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 변경"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_border"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/btn_rfid_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RFID카드 관리"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_border"
+        android:padding="16dp"/>
 </LinearLayout>
