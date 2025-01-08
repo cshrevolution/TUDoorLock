@@ -14,30 +14,30 @@
         android:gravity="center_vertical"
         android:paddingBottom="16dp">
 
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="61dp"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Settings"
+            android:gravity="left"
+            android:src="@drawable/ic_settings" />
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="                  원격 도어락"
-            android:textSize="30sp"
+            android:text="     원격 도어락"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#000000"
             android:gravity="center" />
 
         <ImageButton
-            android:id="@+id/btn_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Settings"
-            android:src="@drawable/ic_settings" />
-
-        <ImageButton
             android:id="@+id/btn_notification"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="65dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -45,49 +45,45 @@
             android:src="@drawable/ic_bell" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_lock_container"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/rounded_border"
         android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp"
         android:layout_margin="16dp">
 
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/iv_lock"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:contentDescription="Lock Icon"
+            android:src="@drawable/ic_lock" />
+
+        <TextView
+            android:id="@+id/tv_lock_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="문 잠금 해제하기"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/iv_lock"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:contentDescription="Lock Icon"
-                android:src="@drawable/ic_lock" />
-
-            <TextView
-                android:id="@+id/tv_lock_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="문 잠금 해제하기"
-                android:textColor="#000000"
-                android:textSize="20sp" />
-        </LinearLayout>
-    </Button>
+    </LinearLayout>
 
     <Button
         android:id="@+id/register_card_button"
-        android:layout_width="match_parent"
+        android:layout_width="377dp"
         android:layout_height="wrap_content"
-        android:text="실시간 카메라"
-        android:textColor="#000000"
-        android:textSize="20sp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_border"
-        android:padding="16dp" />
+        android:padding="16dp"
+        android:text="실시간 카메라"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 </LinearLayout>
