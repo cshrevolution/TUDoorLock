@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // 뷰 초기화
         productIdInput = findViewById(R.id.product_id_input)
-        submitButton = findViewById(R.id.submit_button)
+        submitButton = findViewById(R.id.btn_confirm)
 
         // SharedPreferences에서 제품 아이디 가져오기
         val preferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)

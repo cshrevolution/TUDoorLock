@@ -1,80 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:padding="16dp">
 
-    <!-- 상단 바 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:paddingBottom="16dp">
 
         <TextView
-            android:id="@+id/title_text"
+            android:id="@+id/tv_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="          원격 도어락"
-            android:textColor="#000000"
+            android:text="                  원격 도어락"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:gravity="center" />
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/btn_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Settings"
             android:src="@drawable/ic_settings" />
 
-        <ImageView
-            android:layout_width="49dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="16dp"
+        <ImageButton
+            android:id="@+id/btn_notification"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:contentDescription="Bell"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Notification"
             android:src="@drawable/ic_bell" />
     </LinearLayout>
 
-    <!-- 비밀번호 입력 버튼 -->
-    <LinearLayout
+    <Button
+        android:id="@+id/btn_lock_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:background="@drawable/rounded_border"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_margin="16dp">
 
-        <Button
-            android:id="@+id/btn_unlock"
-            android:layout_width="match_parent"
-            android:layout_height="184dp"
-            android:layout_marginTop="64dp"
-            android:background="@drawable/button_border"
-            android:padding="16dp"
-            android:text="문 잠금 해제"
-            android:textSize="25sp"
-            android:textColor="#000000" />
-
-        <Button
-            android:id="@+id/btn_live_camara"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:background="@drawable/button_border"
-            android:padding="16dp"
-            android:text="실시간 카메라"
-            android:textColor="#000000" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <!-- 하단 버튼들 -->
-    <LinearLayout
+            <ImageView
+                android:id="@+id/iv_lock"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:contentDescription="Lock Icon"
+                android:src="@drawable/ic_lock" />
+
+            <TextView
+                android:id="@+id/tv_lock_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="문 잠금 해제하기"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </Button>
+
+    <Button
+        android:id="@+id/register_card_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <!-- 하단 버튼 내용이 필요하다면 추가 -->
-    </LinearLayout>
+        android:text="실시간 카메라"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_border"
+        android:padding="16dp" />
 </LinearLayout>
