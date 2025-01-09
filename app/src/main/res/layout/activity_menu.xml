@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -55,14 +55,42 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageButton
-            android:id="@+id/iv_lock"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:background="@null"
-            android:contentDescription="Lock Icon"
-            android:src="@drawable/ic_lock" />
+        <FrameLayout
+            android:layout_width="232dp"
+            android:layout_height="226dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/iv_lock"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="Lock Icon"
+                android:src="@drawable/ic_lock" />
+
+            <ImageButton
+                android:id="@+id/iv_unlock"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="Unlock Icon"
+                android:src="@drawable/ic_unlock"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_unlock_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="문 잠구기"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tv_lock_text"
@@ -72,12 +100,13 @@
             android:gravity="center"
             android:text="문 잠금 해제하기"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:visibility="visible" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/register_card_button"
+        android:id="@+id/live_camara_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

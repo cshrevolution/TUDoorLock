@@ -1,52 +1,46 @@
 package com.project.tudoorlock
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var productIdInput: EditText
-    private lateinit var submitButton: Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // 첫 번째 레이아웃 로드
+        setContentView(R.layout.activity_menu)
 
-        // 뷰 초기화
-        productIdInput = findViewById(R.id.product_id_input)
-        submitButton = findViewById(R.id.btn_confirm)
+        // Lock 버튼과 Unlock 버튼 참조
+        val lockButton: ImageButton = findViewById(R.id.iv_lock)
+        val unlockButton: ImageButton = findViewById(R.id.iv_unlock)
 
-        // SharedPreferences 준비
-        val preferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-
-        // 확인 버튼 클릭 이벤트
-        submitButton.setOnClickListener {
-            val inputId = productIdInput.text.toString().trim()
-
-            if (inputId == "666") {
-                // 제품 아이디 저장
-                preferences.edit().putString("product_id", inputId).apply()
-
-                // 인증 완료 메시지 표시
-                Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
-
-                // 메뉴 화면으로 이동
-                navigateToMenuLayout()
-            } else {
-                Toast.makeText(this, "잘못된 제품 아이디입니다.", Toast.LENGTH_SHORT).show()
-            }
+        // intent로부터 잠금 해제 상태 확인
+        val isUnlocked = intent.getBooleanExtra("isUnlocked", false)
+        if (isUnlocked) {
+            // 잠금 해제 상태라면 Unlock 버튼 표시
+            lockButton.visibility = View.GONE
+            unlockButton.visibility = View.VISIBLE
         }
-    }
 
-    private fun navigateToMenuLayout() {
-        // 새 액티비티로 전환
-        val intent = Intent(this, MenuActivity::class.java)
-        startActivity(intent)
-        finish() // 현재 액티비티 종료 (선택 사항)
+        // Lock 버튼 클릭 이벤트
+        lockButton.setOnClickListener {
+            // Lock 버튼 숨기고 Unlock 버튼 표시
+            lockButton.visibility = View.GONE
+            unlockButton.visibility = View.VISIBLE
+        }
+
+        // Unlock 버튼 클릭 이벤트
+        unlockButton.setOnClickListener {
+            // Unlock 버튼 숨기고 Lock 버튼 표시
+            unlockButton.visibility = View.GONE
+            lockButton.visibility = View.VISIBLE
+        }
+
+        // Lock 버튼에서 PasswordInputActivity로 이동
+        lockButton.setOnClickListener {
+            val intent = Intent(this, PasswordInputActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
