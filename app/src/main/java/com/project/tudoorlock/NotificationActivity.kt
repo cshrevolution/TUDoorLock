@@ -10,7 +10,7 @@ class NotificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(R.layout.activity_notification)
 
         // 뒤로가기 버튼 초기화 및 클릭 이벤트
         val backButton: ImageButton = findViewById(R.id.back_button)
