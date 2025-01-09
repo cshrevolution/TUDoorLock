@@ -31,22 +31,16 @@ class MainActivity : AppCompatActivity() {
         dbHelper = DoorlockDBHelper(this, "doorlockDB", null, 1)
         database = dbHelper.writableDatabase
 
-        // 기본 제품 ID 설정
-        val defaultId = "0000"
-
         // 확인 버튼 클릭 이벤트
         submitButton.setOnClickListener {
             val inputId = productIdInput.text.toString().trim()
 
-            // 입력된 ID가 비어있으면 기본값으로 설정
-            val finalId = if (inputId.isEmpty()) defaultId else inputId
-
             // ID를 데이터베이스에서 확인
-            val queryResult = dbHelper.select(database, finalId.toIntOrNull() ?: -1)
+            val queryResult = dbHelper.select(database, inputId.toIntOrNull() ?: -1)
 
             if (queryResult != null && !queryResult.contains("데이터가 없습니다.")) {
                 // 제품 아이디 저장
-                preferences.edit().putString("product_id", finalId).apply()
+                preferences.edit().putString("product_id", inputId).apply()
 
                 // 인증 완료 메시지 표시
                 Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
