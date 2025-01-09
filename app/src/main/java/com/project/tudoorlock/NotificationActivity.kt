@@ -10,9 +10,17 @@ class NotificationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notification)
+        setContentView(R.layout.activity_notification) // activity_notification.xml 로드
 
-        // 뒤로가기 버튼 초기화 및 클릭 이벤트
+        val registerCardButton: Button = findViewById(R.id.register_card_button)
+
+        // 버튼 클릭 이벤트 설정
+        registerCardButton.setOnClickListener {
+            // LiveCameraActivity로 이동
+            val intent = Intent(this, LiveCameraActivity::class.java)
+            startActivity(intent)
+        }
+        // 뒤로가기 버튼 클릭 시 설정 화면으로 이동
         val backButton: ImageButton = findViewById(R.id.back_button)
         backButton.setOnClickListener {
             val intent = Intent(this, MenuActivity::class.java)
