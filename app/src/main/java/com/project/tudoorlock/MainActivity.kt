@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main) // 첫 번째 레이아웃 로드
+        setContentView(R.layout.activity_main)
 
         // 뷰 초기화
         productIdInput = findViewById(R.id.product_id_input)
@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
         submitButton.setOnClickListener {
             val inputId = productIdInput.text.toString().trim()
 
-            if (inputId == "666") {
+            // 변경된 ID 로드
+            val savedId = preferences.getString("currentId", "666") // 기본값: 666
+
+            if (inputId == savedId) {
                 // 제품 아이디 저장
                 preferences.edit().putString("product_id", inputId).apply()
 
