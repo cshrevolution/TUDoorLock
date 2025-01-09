@@ -1,8 +1,8 @@
 package com.project.tudoorlock
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -15,21 +15,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main) // 첫 번째 레이아웃 로드
 
         // 뷰 초기화
         productIdInput = findViewById(R.id.product_id_input)
         submitButton = findViewById(R.id.btn_confirm)
 
-        // SharedPreferences에서 제품 아이디 가져오기
+        // SharedPreferences 준비
         val preferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
-        val savedProductId = preferences.getString("product_id", "")
-
-        // 초기 상태 설정
-        if (savedProductId == "666") {
-            // 제품 아이디가 "666"인 경우
-            Toast.makeText(this, "이미 인증된 사용자입니다.", Toast.LENGTH_SHORT).show()
-        }
 
         // 확인 버튼 클릭 이벤트
         submitButton.setOnClickListener {
@@ -38,10 +31,22 @@ class MainActivity : AppCompatActivity() {
             if (inputId == "666") {
                 // 제품 아이디 저장
                 preferences.edit().putString("product_id", inputId).apply()
+
+                // 인증 완료 메시지 표시
                 Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
+
+                // 메뉴 화면으로 이동
+                navigateToMenuLayout()
             } else {
                 Toast.makeText(this, "잘못된 제품 아이디입니다.", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun navigateToMenuLayout() {
+        // 새 액티비티로 전환
+        val intent = Intent(this, MenuActivity::class.java)
+        startActivity(intent)
+        finish() // 현재 액티비티 종료 (선택 사항)
     }
 }
