@@ -2,6 +2,7 @@ package com.project.tudoorlock
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var productIdInput: EditText
     private lateinit var submitButton: Button
+    private lateinit var dbHelper: DoorlockDBHelper
+    private lateinit var database: SQLiteDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +27,26 @@ class MainActivity : AppCompatActivity() {
         // SharedPreferences 준비
         val preferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
+        // 데이터베이스 초기화
+        dbHelper = DoorlockDBHelper(this, "doorlockDB", null, 1)
+        database = dbHelper.writableDatabase
+
+        // 기본 제품 ID 설정
+        val defaultId = "0000"
+
         // 확인 버튼 클릭 이벤트
         submitButton.setOnClickListener {
             val inputId = productIdInput.text.toString().trim()
 
-            // 변경된 ID 로드
-            val savedId = preferences.getString("currentId", "666") // 기본값: 666
+            // 입력된 ID가 비어있으면 기본값으로 설정
+            val finalId = if (inputId.isEmpty()) defaultId else inputId
 
-            if (inputId == savedId) {
+            // ID를 데이터베이스에서 확인
+            val queryResult = dbHelper.select(database, finalId.toIntOrNull() ?: -1)
+
+            if (queryResult != null && !queryResult.contains("데이터가 없습니다.")) {
                 // 제품 아이디 저장
-                preferences.edit().putString("product_id", inputId).apply()
+                preferences.edit().putString("product_id", finalId).apply()
 
                 // 인증 완료 메시지 표시
                 Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
