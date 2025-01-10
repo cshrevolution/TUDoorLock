@@ -43,8 +43,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.8" />
 
-    <SurfaceView
-        android:id="@+id/sv_camera_view"
+    <WebView
+        android:id="@+id/cameraStreamingView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#EEEEEE"

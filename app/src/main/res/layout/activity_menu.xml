@@ -39,54 +39,101 @@
             android:layout_width="65dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Notification"
             android:src="@drawable/ic_bell" />
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_margin="16dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_border"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_weight="1"
+        android:layout_gravity="center">
 
-        <ImageButton
-            android:id="@+id/iv_lock"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+        <LinearLayout
+            android:id="@+id/unlockButton"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
             android:layout_gravity="center"
-            android:background="@null"
-            android:contentDescription="Lock Icon"
-            android:src="@drawable/ic_lock" />
-
-        <TextView
-            android:id="@+id/tv_lock_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_border"
             android:gravity="center"
-            android:text="문 잠금 해제하기"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:padding="16dp">
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="Lock Icon"
+                android:src="@drawable/ic_lock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="문 잠금 해제하기"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lockButton"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_border"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <ImageButton
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="Lock Icon"
+                android:src="@drawable/ic_unlock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="문 잠그기"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/camera_button"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button_border"
+            android:padding="12dp"
+            android:text="실시간 카메라"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/camera_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button_border"
-        android:padding="12dp"
-        android:text="실시간 카메라"
-        android:textColor="#000000"
-        android:textSize="18sp" />
 
 
 </LinearLayout>

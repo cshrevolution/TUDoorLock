@@ -1,13 +1,23 @@
 package com.project.tudoorlock
 
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothSocket
 import android.content.Intent
 import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
+import java.util.UUID
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,47 +26,61 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dbHelper: DoorlockDBHelper
     private lateinit var database: SQLiteDatabase
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // 뷰 초기화
         productIdInput = findViewById(R.id.product_id_input)
         submitButton = findViewById(R.id.btn_confirm)
 
-        // SharedPreferences 준비
+
+
         val preferences: SharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
 
-        // 데이터베이스 초기화
-        dbHelper = DoorlockDBHelper(this, "doorlockDB", null, 1)
-        database = dbHelper.writableDatabase
+        if (preferences.getInt("count", 0) == 0) {
 
-        // 확인 버튼 클릭 이벤트
-        submitButton.setOnClickListener {
-            val inputId = productIdInput.text.toString().trim()
+            dbHelper = DoorlockDBHelper(this, "doorlockDB", null, 1)
+            database = dbHelper.writableDatabase
 
-            // ID를 데이터베이스에서 확인
-            val queryResult = dbHelper.select(database, inputId.toIntOrNull() ?: -1)
+            submitButton.setOnClickListener {
+                val inputId = productIdInput.text.toString().trim().toInt()
 
-            if (queryResult != null && !queryResult.contains("데이터가 없습니다.")) {
-                // 제품 아이디 저장
-                preferences.edit().putString("product_id", inputId).apply()
+                val queryResult = dbHelper.idSelect(database, inputId)
 
-                // 인증 완료 메시지 표시
-                Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
+                Log.d("queryResult", queryResult.toString())
 
-                // 메뉴 화면으로 이동
-                navigateToMenuLayout()
-            } else {
-                Toast.makeText(this, "잘못된 제품 아이디입니다.", Toast.LENGTH_SHORT).show()
+
+                if (queryResult?.contains("데이터가 없습니다.") == true) {
+                    dbHelper.insert(dbHelper.dbReturn(), 1111, 1234)
+                    Toast.makeText(this, "임의 값 추가 완료", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }
+
+                else if (queryResult != null && queryResult.contains(inputId.toString())) {
+
+                    preferences.edit().putInt("product_id", inputId).apply()
+
+                    Toast.makeText(this, "인증 완료!", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, MenuActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                else {
+                    Toast.makeText(this, "잘못된 제품 아이디입니다.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
+        else {
+            startActivity(Intent(this, MenuActivity::class.java))
+            finish()
+        }
+
     }
 
-    private fun navigateToMenuLayout() {
-        // 새 액티비티로 전환
-        val intent = Intent(this, MenuActivity::class.java)
-        startActivity(intent)
-        finish() // 현재 액티비티 종료 (선택 사항)
-    }
+
 }
+
+
